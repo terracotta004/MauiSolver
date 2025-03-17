@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiSolver.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiSolver"
+    Shell.FlyoutBehavior="Flyout"
+    Title="MauiSolver">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="Cryptogram Solver"
+        ContentTemplate="{DataTemplate local:SolveCryptogramPage}"
+        Route="SolveCryptogramPage" />
+
+    <ShellContent
+        Title="Sudoku Solver"
+        ContentTemplate="{DataTemplate local:SolveSudokuPage}"
+        Route="SolveSudokuPage" />
+
+</Shell>

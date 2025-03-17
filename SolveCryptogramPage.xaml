@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiSolver.SolveCryptogramPage">
+	<StackLayout Padding="20">
+		<!-- Editor for text input -->
+		<Editor x:Name="TextEditor"
+                Placeholder="Enter your text here"
+                AutoSize="TextChanges" />
+
+		<!-- Submit button -->
+		<Button Text="Submit"
+                Clicked="OnSubmitButtonClicked" />
+
+		<!-- Display area -->
+		<Label x:Name="DisplayLabel"
+               Text=""
+               FontSize="Medium"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand" />
+	</StackLayout>
+</ContentPage>
