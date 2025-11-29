@@ -18,5 +18,5 @@
                FontSize="Medium"
                VerticalOptions="CenterAndExpand"
                HorizontalOptions="CenterAndExpand" />
-	</StackLayout>
+    </StackLayout>
 </ContentPage>

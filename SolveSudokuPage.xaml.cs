@@ -1,18 +1,22 @@
+using MauiSolver.Services;
+
 namespace MauiSolver;
 
 public partial class SolveSudokuPage : ContentPage
 {
-	public SolveSudokuPage()
-	{
-		InitializeComponent();
+    private readonly ISudokuSolver _sudokuSolver;
+    private readonly Entry[,] _entries = new Entry[9, 9];
+
+    public SolveSudokuPage(ISudokuSolver sudokuSolver)
+    {
+        _sudokuSolver = sudokuSolver ?? throw new ArgumentNullException(nameof(sudokuSolver));
+        InitializeComponent();
         CreateSudokuGrid();
     }
 
-    private Entry[,] _entries = new Entry[9, 9];
-
     private void CreateSudokuGrid()
     {
-        Grid grid = new Grid { Padding = 10 };
+        var grid = new Grid { Padding = 10 };
         for (int i = 0; i < 9; i++)
         {
             grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -50,29 +54,12 @@ public partial class SolveSudokuPage : ContentPage
         Content = layout;
     }
 
-    private void SolveSudoku(object sender, EventArgs e)
+    private void SolveSudoku(object? sender, EventArgs e)
     {
-        int[,] board = new int[9, 9];
-        for (int row = 0; row < 9; row++)
+        var board = ReadBoard();
+        if (_sudokuSolver.TrySolve(board, out var solvedBoard))
         {
-            for (int col = 0; col < 9; col++)
-            {
-                if (int.TryParse(_entries[row, col].Text, out int num))
-                    board[row, col] = num;
-                else
-                    board[row, col] = 0;
-            }
-        }
-
-        if (Solve(board))
-        {
-            for (int row = 0; row < 9; row++)
-            {
-                for (int col = 0; col < 9; col++)
-                {
-                    _entries[row, col].Text = board[row, col].ToString();
-                }
-            }
+            WriteBoard(solvedBoard);
         }
         else
         {
@@ -80,50 +67,29 @@ public partial class SolveSudokuPage : ContentPage
         }
     }
 
-    private bool Solve(int[,] board)
+    private int[,] ReadBoard()
+    {
+        var board = new int[9, 9];
+        for (int row = 0; row < 9; row++)
+        {
+            for (int col = 0; col < 9; col++)
+            {
+                if (int.TryParse(_entries[row, col].Text, out var num))
+                    board[row, col] = num;
+            }
+        }
+
+        return board;
+    }
+
+    private void WriteBoard(int[,] board)
     {
         for (int row = 0; row < 9; row++)
         {
             for (int col = 0; col < 9; col++)
             {
-                if (board[row, col] == 0)
-                {
-                    for (int num = 1; num <= 9; num++)
-                    {
-                        if (IsValid(board, row, col, num))
-                        {
-                            board[row, col] = num;
-                            if (Solve(board))
-                                return true;
-                            board[row, col] = 0;
-                        }
-                    }
-                    return false;
-                }
+                _entries[row, col].Text = board[row, col].ToString();
             }
         }
-        return true;
-    }
-
-    private bool IsValid(int[,] board, int row, int col, int num)
-    {
-        for (int i = 0; i < 9; i++)
-        {
-            if (board[row, i] == num || board[i, col] == num)
-                return false;
-        }
-
-        int startRow = (row / 3) * 3;
-        int startCol = (col / 3) * 3;
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                if (board[startRow + i, startCol + j] == num)
-                    return false;
-            }
-        }
-
-        return true;
     }
 }
