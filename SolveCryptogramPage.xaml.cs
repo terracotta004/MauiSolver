@@ -26,8 +26,9 @@ public partial class SolveCryptogramPage : ContentPage
         try
         {
             DisplayLabel.Text = "Solving...";
-            var result = await _cryptogramSolver.SolveAsync(inputText);
-            DisplayLabel.Text = string.IsNullOrWhiteSpace(result) ? "No output returned." : result;
+            var solution = await _cryptogramSolver.SolveAsync(inputText);
+            var report = solution.ToReport();
+            DisplayLabel.Text = string.IsNullOrWhiteSpace(report) ? "No output returned." : report;
         }
         catch (Exception ex)
         {

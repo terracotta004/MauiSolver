@@ -1,17 +1,15 @@
 # MauiSolver
 
-In-progress puzzle solver application using .NET MAUI. Currently supports solving cryptograms on Windows, and sudokus cross-platform.
+Cross platform puzzle solver application using .NET MAUI. Currently supports solving cryptograms and sudokus. 
 
-Uses aquach's cyrptogram solver: https://github.com/aquach/cryptogram-solver. Used with permission from COPYING MIT license (included).
+Uses aquach's cyrptogram solver: 
 
-Made with Visual Studio and ChatGPT.
+https://github.com/aquach/cryptogram-solver
 
-Screenshots:
+Ported to C#:
 
-<img src="Screenshot 2025-03-17 002445.png" alt="Alt text 1" width="500"/>
+https://github.com/terracotta004/CryptogramSolver
 
-<img src="Screenshot 2025-03-17 002551.png" alt="Alt text 1" width="500"/>
+Used with permission from COPYING MIT license (included).
 
-<img src="Screenshot 2025-03-17 002747.png" alt="Alt text 1" width="500"/>
-
-<img src="Screenshot 2025-03-17 002805.png" alt="Alt text 1" width="500"/>
+Made with Visual Studio Code and ChatGPT.

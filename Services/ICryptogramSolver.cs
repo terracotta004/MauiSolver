@@ -1,9 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
+using MauiSolver.Services.Models;
 
 namespace MauiSolver.Services;
 
 public interface ICryptogramSolver
 {
-    Task<string> SolveAsync(string input, CancellationToken cancellationToken = default);
+    Task<CryptogramSolution> SolveAsync(string input, CancellationToken cancellationToken = default);
 }

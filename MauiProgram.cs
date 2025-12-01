@@ -16,8 +16,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-        builder.Services.AddSingleton<ICryptogramSolver, CryptogramSolver>();
-        builder.Services.AddSingleton<ISudokuSolver, BacktrackingSudokuSolver>();
+        builder.Services.AddSingleton<ICryptogramSolver, Services.CryptogramSolver>();
+        builder.Services.AddSingleton<ISudokuSolver, SudokuSolver>();
         builder.Services.AddTransient<SolveCryptogramPage>();
         builder.Services.AddTransient<SolveSudokuPage>();
 
