@@ -14,4 +14,4 @@ Used with permission from COPYING MIT license (included).
 
 Made with Visual Studio Code and ChatGPT.
 
-<img src="Screenshot_20251130_230115.jpg" />
+<img src="Screenshot_20251130_230115.jpg" width="400"/>
