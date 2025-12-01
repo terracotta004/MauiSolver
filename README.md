@@ -1,6 +1,6 @@
 # MauiSolver
 
-Cross platform puzzle solver application using .NET MAUI. Currently supports solving cryptograms and sudokus. 
+Cross platform puzzle solver application using .NET MAUI. Currently supports solving cryptograms and sudokus on Android and Windows. macOS / iOS is supported in theory (not tested yet)
 
 Uses aquach's cyrptogram solver: 
 
