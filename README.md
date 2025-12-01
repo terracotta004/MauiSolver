@@ -13,3 +13,5 @@ https://github.com/terracotta004/CryptogramSolver
 Used with permission from COPYING MIT license (included).
 
 Made with Visual Studio Code and ChatGPT.
+
+<img src="Screenshot_20251130_230115.jpg" />
